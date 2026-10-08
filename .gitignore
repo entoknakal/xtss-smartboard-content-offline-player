@@ -30,3 +30,5 @@ Homestead.json
 .phpactor.json
 auth.json
 /nativephp/electron/dist/
+*.txt
+!public/robots.txt
