@@ -1,0 +1,16 @@
+{
+    "name": "TSS Offline Player",
+    "short_name": "XTSS",
+    "background_color": "#20a75d",
+    "display": "fullscreen",
+    "description": "Teaching Smart System Offline Player",
+    "theme_color": "#20a75d",
+    "start_url": "/",
+    "icons": [
+        {
+            "src": "logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
