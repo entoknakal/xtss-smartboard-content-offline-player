@@ -38,6 +38,14 @@ class EnvSettings extends Page implements HasForms
     public function mount(): void
     {
         $settings = Settings::all()->pluck('uuid', 'name')->toArray();
+        // Pengecekan aman untuk null, string kosong (""), maupun key yang belum ada
+        if (empty($settings['license_id'] ?? null)) {
+            auth()->guard('web')->logout();
+            session()->invalidate();
+            session()->regenerateToken();
+            $this->redirect($this->goToLicensePage());
+            return;
+        }
 
         $this->form->fill([
             'license_id'    => $settings['license_id'] ?? '',
@@ -51,6 +59,11 @@ class EnvSettings extends Page implements HasForms
             'kota'          => $settings['kota'] ?? '',
             'kecamatan'     => $settings['kecamatan'] ?? '',
         ]);
+    }
+
+    public function goToLicensePage()
+    {
+        return route('license.activate');
     }
 
     public function form(Schema $schema): Schema

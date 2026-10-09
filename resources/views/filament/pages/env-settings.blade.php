@@ -15,12 +15,14 @@
                 Batal
             </x-filament::button>
 
-            <!-- Tombol Sinkronisasi -->
-            <x-filament::button type="button" wire:click="syncToOnline" wire:loading.attr="disabled" color="info"
-                outlined>
-                <span wire:loading.remove wire:target="syncToOnline">Simpan & Sync ke XTSS Online</span>
-                <span wire:loading wire:target="syncToOnline">Mengirim Data...</span>
-            </x-filament::button>
+            @if (auth()->user()->role !== 'guru')
+                <!-- Tombol Sinkronisasi -->
+                <x-filament::button type="button" wire:click="syncToOnline" wire:loading.attr="disabled" color="info"
+                    outlined>
+                    <span wire:loading.remove wire:target="syncToOnline">Simpan & Sync ke XTSS Online</span>
+                    <span wire:loading wire:target="syncToOnline">Mengirim Data...</span>
+                </x-filament::button>
+            @endif
         </div>
     </form>
 </x-filament-panels::page>

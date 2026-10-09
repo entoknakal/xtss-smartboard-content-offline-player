@@ -41,6 +41,23 @@
         </a>
     </div>
 
+    <!-- URL QUIT, MINIMIZE -->
+    <div class="fixed bottom-0 right-0 z-50 flex items-center gap-4" style="padding: 0 10px 10px 10px;">
+        <!-- Tombol Minimized Window -->
+        <button onclick="fetch('{{ route('kecilin') }}')" title="Minimized Window"
+            class="bg-white/80 dark:bg-[#161615]/80 backdrop-blur-md px-3 py-2 rounded-xl flex items-center gap-2 transition-all duration-300 shadow-md hover:-translate-y-0.5 border border-gray-200 dark:border-gray-800 text-black dark:text-white cursor-pointer">
+            <img src="{{ asset('img/minimized_window.png') }}" width="20" class="opacity-80">
+            <span class="text-xs font-semibold">Minimize</span>
+        </button>
+
+        <!-- Tombol Quit -->
+        <a href="{{ route('keluar') }}" onclick="showPreloader()" title="Keluar Aplikasi"
+            class="bg-red-500/90 hover:bg-red-600/90 text-white px-3 py-2 rounded-xl flex items-center gap-2 transition-all duration-300 shadow-md hover:-translate-y-0.5">
+            <img src="{{asset('img/switch.png')}}" width="20" class="invert dark:invert-0">
+            <span class="text-xs font-semibold">Quit</span>
+        </a>
+    </div>
+
     <div class="relative h-screen w-screen flex flex-col justify-center items-center">
         <div class="absolute inset-0 z-1 overflow-hidden">
             {{-- <video autoplay muted playsinline> --}}
@@ -96,8 +113,10 @@
                         Mulai Belajar
                     </a>
                 </div>
-
             </div>
+        </div>
+        <div class="z-3 text-xs text-white/80 dark:text-white/70 font-medium drop-shadow-md">
+            version {{ Native\Desktop\Facades\App::version() }}
         </div>
     </div>
     @livewireScripts

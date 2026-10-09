@@ -22,7 +22,7 @@
                 Simpan Lisensi
             </x-filament::button>
             <x-filament::button type="button" wire:click="resetForm" color="gray" outlined>
-                Batal
+                Bersihkan Form
             </x-filament::button>
         </div>
     </form>

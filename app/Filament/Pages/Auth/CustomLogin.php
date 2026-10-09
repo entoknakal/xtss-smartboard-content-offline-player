@@ -16,8 +16,22 @@ class CustomLogin extends BaseLogin
 {
     protected string $view = 'filament.pages.auth.custom-login';
 
+    public function goToLicensePage()
+    {
+        return route('license.activate');
+    }
+
     public function getFormContentComponent(): Component
     {
+        $settings = Settings::all()->pluck('uuid', 'name')->toArray();
+        // Pengecekan aman untuk null, string kosong (""), maupun key yang belum ada
+        if (empty($settings['license_id'] ?? null)) {
+            auth()->guard('web')->logout();
+            session()->invalidate();
+            session()->regenerateToken();
+            $this->redirect($this->goToLicensePage());
+        }
+
         return Form::make([EmbeddedSchema::make('form')])
             ->id('form')
             ->livewireSubmitHandler('authenticate')

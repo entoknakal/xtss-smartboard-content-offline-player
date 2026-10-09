@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
+use Native\Desktop\Facades\App;
+use Native\Desktop\Facades\Window;
 
 // Route::view('/', 'welcome')->name('dashboard');
 
@@ -75,3 +77,10 @@ Route::get('/storage/ztss_extracted/{uuid}/{userId}/{kelasId}/{htmlName}', funct
 
     return Storage::disk('local')->response($path);
 })->name('html.viewer')->middleware(['auth']);
+Route::get('/exit-app', function () {
+    App::quit();
+})->name('keluar');
+Route::get('/minimized-app', function () {
+    Window::minimize();
+    return response()->json(['status' => 'success']);
+})->name('kecilin');
