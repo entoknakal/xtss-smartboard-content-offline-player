@@ -17,5 +17,9 @@
     "dependencies": {
         "composer-watch": "^1.0.1",
         "fb-watchman": "^2.0.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/entoknakal/xtss-smartboard-content-offline-player.git"
     }
 }
