@@ -58,6 +58,14 @@ Route::get('/', function () {
         Artisan::call('storage:link');
     }
 
+    $api_url = Settings::query()->where('name', '=', 'api_url')->first();
+    if(is_null($api_url)){
+        Settings::firstOrCreate(
+            ['name' => 'api_url'], // search criteria
+            ['uuid' => 'http://127.0.0.1:8000'] // insert-only data
+        );
+    }
+
     return view('welcome');
 })->name('dashboard');
 
@@ -81,6 +89,6 @@ Route::get('/exit-app', function () {
     App::quit();
 })->name('keluar');
 Route::get('/minimized-app', function () {
-    Window::minimize();
+    Window::minimize('main');
     return response()->json(['status' => 'success']);
 })->name('kecilin');

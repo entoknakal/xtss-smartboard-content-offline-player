@@ -24,7 +24,7 @@ class ContentFilesResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'user_id';
 
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 4;
 
     protected static ?string $pluralModelLabel = 'Data';
 

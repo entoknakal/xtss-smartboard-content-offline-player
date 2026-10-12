@@ -17,13 +17,18 @@
     <form wire:submit.prevent="save" class="space-y-6">
         {{ $this->form }}
 
-        <div class="flex items-center gap-3" style="margin-top:2rem !important;">
+        <div class="flex items-center gap-3" style="margin-top:2rem !important; margin-bottom:1rem;">
             <x-filament::button type="submit" color="primary">
                 Simpan Lisensi
             </x-filament::button>
             <x-filament::button type="button" wire:click="resetForm" color="gray" outlined>
                 Bersihkan Form
             </x-filament::button>
+        </div>
+        <div style="display: grid; place-items: center; width: 100%; text-align: center; margin-top:1rem;">
+            <span class="text-xs text-gray-500 dark:text-gray-400" style="font-size: small; color: #C7BCB8;">
+                version {{ Native\Desktop\Facades\App::version() }}
+            </span>
         </div>
     </form>
 

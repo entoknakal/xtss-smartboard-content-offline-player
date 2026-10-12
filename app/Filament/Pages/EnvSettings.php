@@ -294,7 +294,8 @@ class EnvSettings extends Page implements HasForms
         }
 
         try {
-            $baseUrl = rtrim(config('services.tss_online.url'), '/');
+            $api_url = Settings::query()->where('name', 'api_url')->first()->uuid;
+            $baseUrl = rtrim($api_url, '/');
 
             // 2. Kirim data ke API Online
             $response = Http::timeout(15)

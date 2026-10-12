@@ -29,7 +29,7 @@ class NativeAppServiceProvider implements ProvidesPhpIni
             Artisan::call('storage:link');
         }
 
-        Window::open()
+        Window::open('main')
             ->fullscreen()
             ->showDevTools(false); // Untuk debugging set menjadi true;
     }

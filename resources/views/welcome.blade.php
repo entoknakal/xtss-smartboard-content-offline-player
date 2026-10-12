@@ -51,7 +51,7 @@
         </button>
 
         <!-- Tombol Quit -->
-        <a href="{{ route('keluar') }}" onclick="showPreloader()" title="Keluar Aplikasi"
+        <a href="{{ route('keluar') }}" title="Keluar Aplikasi"
             class="bg-red-500/90 hover:bg-red-600/90 text-white px-3 py-2 rounded-xl flex items-center gap-2 transition-all duration-300 shadow-md hover:-translate-y-0.5">
             <img src="{{asset('img/switch.png')}}" width="20" class="invert dark:invert-0">
             <span class="text-xs font-semibold">Quit</span>

@@ -16,5 +16,8 @@ class SettingSeeder extends Seeder
         Settings::create([
             'name' => 'license_id'
         ]);
+        Settings::create([
+            'name' => 'api_url',
+        ]);
     }
 }

@@ -3,11 +3,13 @@
 namespace App\Livewire;
 
 use App\Models\Settings;
+use App\Models\User;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -108,6 +110,27 @@ class LicenseForm extends Component implements HasForms
                         ['name' => $key],  // Jika record dengan 'name' ini sudah ada, perbarui nilainya
                         ['uuid' => $value] // Masukkan datanya ke dalam kolom uuid
                     );
+                }
+
+                // Cek apakah user admin sudah ada atau belum
+                $count_user = User::count();
+                if ($count_user === 0) {
+                    User::insert([
+                        [
+                            'name' => 'Super Administrator',
+                            'email' => 'superadmin@localhost.com',
+                            'password' => Hash::make('password'),
+                            'created_at' => now(),
+                            'updated_at' => now(),
+                        ],
+                        [
+                            'name' => 'Administrator',
+                            'email' => 'admin@localhost.com',
+                            'password' => Hash::make('123456'),
+                            'created_at' => now(),
+                            'updated_at' => now(),
+                        ],
+                    ]);
                 }
             }
 

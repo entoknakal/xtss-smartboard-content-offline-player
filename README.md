@@ -1,6 +1,11 @@
 # XTSS Smartboard Offline Player
 
 ## Version
+- 1.1.0:
+    - Penambahan fitur di filament:
+        * Input API URL dengan default http://127.0.0.1:8000 dan fitur cek koneksi ke URL.
+        * Sinkronisasi data sekolah (nama sekolah, alamat, lintang dan bujur) ke server.
+        * Sinkronisasi data user admin sekolah dan guru (nama dan password) ke server, baik data baru maupun data lama.
 - 1.0.0: first release
 
 ## Fitur
